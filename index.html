@@ -546,6 +546,7 @@
   const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
   const sections=[...document.querySelectorAll('section')];
   const navEl=document.querySelector('nav.cats');
+  const navUl=navEl?navEl.querySelector('ul'):null;
   let currentId=null;
 
   function syncNav(){
@@ -558,7 +559,12 @@
     currentId=activeId;
     const target=map.get(activeId);
     links.forEach(a=>a.classList.toggle('active',a===target));
-    if(target) target.scrollIntoView({inline:'center',block:'nearest'});
+    // horizontal-only: nudge the chip strip just enough to keep the active chip visible
+    if(target && navUl){
+      const ur=navUl.getBoundingClientRect(), ar=target.getBoundingClientRect();
+      if(ar.left < ur.left+14) navUl.scrollBy({left:ar.left-ur.left-14, behavior:'smooth'});
+      else if(ar.right > ur.right-14) navUl.scrollBy({left:ar.right-ur.right+14, behavior:'smooth'});
+    }
   }
 
   let ticking=false;
