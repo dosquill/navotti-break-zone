@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#123b3b">
+<title>Menù · Navotti Break Zone</title>
+<meta name="description" content="Menù Navotti Break Zone — bar healthy del centro Gym Navotti, Angri (SA). Caffetteria, pancake, yogurt, porridge, bowl, primi e secondi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&family=Baloo+2:wght@500;600;700;800&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sage:#d5d4c6;
+    --sage-deep:#c8c7b6;
+    --teal:#123b3b;
+    --teal-soft:#1c5050;
+    --teal-line:#2c6160;
+    --cream:#f3f2e7;
+    --cream-dim:#e7e6d6;
+    --ink:#16403f;
+    --muted:#5d6e66;
+    --accent:#b9613b;        /* warm terracotta accent */
+    --accent-soft:#cf7a52;
+    --stone:#8a958c;
+    --radius:18px;
+    --maxw:720px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Mulish',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--sage);
+    line-height:1.5;
+    overflow-x:hidden;
+    /* subtle grain for atmosphere */
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  }
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 16px 64px}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    margin:0 -16px;
+    padding:54px 24px 40px;
+    text-align:center;
+    background:
+      radial-gradient(120% 90% at 50% -10%, rgba(28,80,80,.18), transparent 60%),
+      linear-gradient(180deg,var(--sage-deep),var(--sage));
+    border-bottom:2px solid rgba(18,59,59,.15);
+    overflow:hidden;
+  }
+  .hero .badge-top{
+    display:inline-block;
+    font-family:'Baloo 2',sans-serif;
+    font-weight:700;letter-spacing:.32em;
+    font-size:.7rem;color:var(--cream);
+    background:var(--stone);
+    padding:7px 20px 6px;border-radius:999px;
+    text-transform:uppercase;
+    box-shadow:0 6px 16px rgba(18,59,59,.18);
+  }
+  .bowl-mark{margin:22px auto 4px;width:78px;height:78px;display:block;color:var(--teal-soft)}
+  .brand{
+    font-family:'Saira Stencil One',sans-serif;
+    font-size:clamp(2.9rem,16vw,4.4rem);
+    line-height:.9;color:var(--teal);
+    letter-spacing:.04em;
+    text-shadow:2px 3px 0 rgba(138,149,140,.35);
+  }
+  .brand-sub{
+    font-family:'Baloo 2',sans-serif;font-weight:700;
+    letter-spacing:.5em;font-size:.82rem;
+    color:var(--cream);background:var(--stone);
+    display:inline-block;padding:5px 6px 4px 18px;border-radius:8px;
+    margin-top:8px;text-transform:uppercase;
+  }
+  .services{
+    display:flex;flex-wrap:wrap;gap:8px;justify-content:center;
+    margin:24px auto 26px;max-width:430px;
+  }
+  .services span{
+    font-family:'Baloo 2',sans-serif;font-weight:600;
+    font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--teal);border:1.5px solid rgba(18,59,59,.32);
+    padding:7px 13px;border-radius:999px;background:rgba(243,242,231,.4);
+  }
+  .call{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Baloo 2',sans-serif;font-weight:800;
+    font-size:1.32rem;letter-spacing:.04em;
+    color:var(--cream);background:var(--teal);
+    padding:13px 26px;border-radius:14px;text-decoration:none;
+    box-shadow:0 10px 22px rgba(18,59,59,.28);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .call:active{transform:translateY(2px);box-shadow:0 5px 12px rgba(18,59,59,.3)}
+  .call small{display:block;font-size:.6rem;font-weight:600;letter-spacing:.22em;opacity:.7;margin-bottom:1px}
+  .call svg{width:20px;height:20px;flex:none}
+  .addr{
+    margin-top:22px;font-size:.82rem;color:var(--muted);
+    font-weight:600;letter-spacing:.02em;line-height:1.55;
+  }
+  .addr a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(185,97,59,.4)}
+
+  /* ---------- STICKY NAV ---------- */
+  nav.cats{
+    position:sticky;top:0;z-index:30;
+    margin:0 -16px;padding:9px 0;
+    background:rgba(213,212,198,.92);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(18,59,59,.14);
+  }
+  nav.cats ul{
+    display:flex;gap:7px;overflow-x:auto;list-style:none;
+    padding:0 16px;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  nav.cats ul::-webkit-scrollbar{display:none}
+  nav.cats a{
+    display:block;white-space:nowrap;text-decoration:none;
+    font-family:'Baloo 2',sans-serif;font-weight:700;font-size:.78rem;
+    letter-spacing:.04em;text-transform:uppercase;
+    color:var(--teal);border:1.5px solid rgba(18,59,59,.25);
+    padding:6px 14px;border-radius:999px;
+    transition:all .18s ease;
+  }
+  nav.cats a.active{background:var(--teal);color:var(--cream);border-color:var(--teal)}
+
+  /* ---------- SECTIONS ---------- */
+  section{scroll-margin-top:60px;padding-top:34px}
+  .sec-head{
+    display:flex;align-items:center;gap:14px;margin-bottom:18px;
+  }
+  .sec-head h2{
+    font-family:'Baloo 2',sans-serif;font-weight:800;
+    font-size:1.5rem;letter-spacing:.02em;text-transform:uppercase;
+    color:var(--cream);background:var(--teal);
+    padding:9px 22px 8px;border-radius:14px;
+    box-shadow:0 8px 18px rgba(18,59,59,.22);
+    position:relative;
+  }
+  .sec-head .flat{
+    flex:1;height:2px;border-radius:2px;
+    background:repeating-linear-gradient(90deg,rgba(18,59,59,.3) 0 7px,transparent 7px 14px);
+  }
+  .sec-note{
+    font-size:.8rem;color:var(--muted);font-style:italic;
+    margin:-8px 0 16px;font-weight:500;
+  }
+  .price-banner{
+    font-family:'Baloo 2',sans-serif;font-weight:800;
+    color:var(--accent);font-size:1.45rem;letter-spacing:.04em;
+    text-align:center;margin:-6px 0 14px;
+  }
+
+  /* item rows with leader dots */
+  ul.items{list-style:none}
+  ul.items li{
+    display:flex;align-items:baseline;gap:6px;
+    padding:11px 0;border-bottom:1px solid rgba(18,59,59,.1);
+  }
+  ul.items li:last-child{border-bottom:none}
+  .it-name{font-weight:700;color:var(--ink);font-size:1.02rem}
+  .it-desc{display:block;font-size:.82rem;color:var(--muted);font-weight:500;margin-top:3px;line-height:1.45}
+  .it-main{flex:1;min-width:0}
+  .leader{flex:1;border-bottom:2px dotted rgba(18,59,59,.28);transform:translateY(-4px);min-width:14px}
+  .price{
+    font-family:'Baloo 2',sans-serif;font-weight:700;
+    color:var(--accent);font-size:1rem;white-space:nowrap;flex:none;
+  }
+  /* compact two-col list for plain name lists */
+  ul.grid{list-style:none;columns:2;column-gap:22px}
+  ul.grid li{
+    break-inside:avoid;padding:7px 0;font-weight:600;font-size:.9rem;
+    color:var(--ink);border-bottom:1px solid rgba(18,59,59,.1);
+  }
+  @media(max-width:430px){ul.grid{columns:1}}
+
+  .pair{
+    background:rgba(243,242,231,.55);border:1.5px solid rgba(18,59,59,.18);
+    border-radius:14px;padding:14px 18px;margin-top:14px;
+  }
+  .pair h3{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-soft);margin-bottom:8px}
+  .pair ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+  .pair li{font-weight:600;font-size:.85rem;color:var(--ink);background:var(--cream);padding:6px 13px;border-radius:999px;border:1px solid rgba(18,59,59,.12)}
+
+  /* ---------- BUILD YOUR BOWL ---------- */
+  .builder{
+    background:linear-gradient(180deg,var(--teal),#0e3231);
+    color:var(--cream);border-radius:var(--radius);
+    padding:24px 20px;margin-top:18px;
+    box-shadow:0 14px 30px rgba(18,59,59,.3);
+  }
+  .builder .b-title{text-align:center;margin-bottom:4px}
+  .builder .b-title strong{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:.05em;text-transform:uppercase;display:block}
+  .builder .b-from{text-align:center;color:var(--accent-soft);font-family:'Baloo 2',sans-serif;font-weight:700;letter-spacing:.05em;margin-bottom:18px}
+  .step{margin-top:16px}
+  .step-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1.5px solid var(--teal-line);padding-bottom:5px;margin-bottom:9px}
+  .step-head h4{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:.92rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cream)}
+  .step-head .add{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:.82rem;color:var(--accent-soft);white-space:nowrap}
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chips span{font-size:.8rem;font-weight:600;background:rgba(243,242,231,.1);border:1px solid var(--teal-line);padding:5px 11px;border-radius:999px;color:var(--cream-dim)}
+  .chips span b{color:var(--accent-soft);font-family:'Baloo 2',sans-serif;font-weight:700;margin-left:4px}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    margin:48px -16px -64px;padding:40px 24px 46px;text-align:center;
+    background:linear-gradient(180deg,var(--sage),var(--sage-deep));
+    border-top:2px solid rgba(18,59,59,.15);
+  }
+  footer .slogan{
+    font-family:'Saira Stencil One',sans-serif;
+    font-size:1.5rem;color:var(--teal);line-height:1.15;letter-spacing:.02em;
+    text-shadow:1px 2px 0 rgba(138,149,140,.3);
+  }
+  footer .f-addr{margin-top:18px;font-size:.82rem;color:var(--muted);font-weight:600;line-height:1.6}
+  footer .f-call{
+    display:inline-flex;align-items:center;gap:8px;margin-top:18px;
+    font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.05rem;
+    color:var(--cream);background:var(--teal);padding:10px 22px;border-radius:12px;
+    text-decoration:none;
+  }
+
+  /* load-in animation */
+  .reveal{opacity:0;transform:translateY(14px);animation:rise .6s cubic-bezier(.2,.7,.3,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){.reveal{animation:none;opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="badge-top">Menù</span>
+  <svg class="bowl-mark" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M8 30h48a24 24 0 0 1-48 0Z" fill="currentColor" fill-opacity=".12"/>
+    <path d="M8 30h48"/>
+    <path d="M11 30a21 21 0 0 0 42 0"/>
+    <path d="M24 30c-2-7 3-12 3-12M33 30c-1-5 4-9 4-9M41 28c2-5-1-9-1-9"/>
+    <path d="M44 16l9-7"/>
+  </svg>
+  <div class="brand">NAVOTTI</div>
+  <div class="brand-sub">Break&nbsp;Zone</div>
+
+  <div class="services">
+    <span>Consegna a domicilio</span>
+    <span>Servizio asporto</span>
+    <span>Consumazione sul posto</span>
+  </div>
+
+  <a class="call" href="tel:+393347744033">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1l-2.2 2.2Z"/></svg>
+    <span><small>Per prenotazioni</small>334 774 4033</span>
+  </a>
+
+  <p class="addr">
+    Via Nazionale, 166 — Angri (SA)<br>
+    All'interno del centro <strong>Gym Navotti</strong><br>
+    <a href="https://maps.google.com/?q=Via+Nazionale+166+Angri+SA" target="_blank" rel="noopener">Apri su Google Maps</a>
+  </p>
+</header>
+
+<nav class="cats" aria-label="Categorie">
+  <ul>
+    <li><a href="#caffetteria">Caffetteria</a></li>
+    <li><a href="#frullati">Frullati</a></li>
+    <li><a href="#smoothie">Smoothie</a></li>
+    <li><a href="#pancake">Pancake</a></li>
+    <li><a href="#yogurt">Yogurt</a></li>
+    <li><a href="#porridge">Porridge</a></li>
+    <li><a href="#breakfast">Breakfast</a></li>
+    <li><a href="#bowl">Bowl</a></li>
+    <li><a href="#primi">Primi</a></li>
+    <li><a href="#secondi">Secondi</a></li>
+    <li><a href="#bibite">Bibite</a></li>
+  </ul>
+</nav>
+
+<main class="wrap">
+
+  <!-- CAFFETTERIA -->
+  <section id="caffetteria">
+    <div class="sec-head"><h2>Caffetteria</h2><span class="flat"></span></div>
+    <ul class="items">
+      <li><div class="it-main"><span class="it-name">Espresso</span></div><span class="leader"></span><span class="price">€ 1,00</span></li>
+      <li><div class="it-main"><span class="it-name">Espresso macchiato</span></div><span class="leader"></span><span class="price">€ 1,20</span></li>
+      <li><div class="it-main"><span class="it-name">Decaffeinato</span></div><span class="leader"></span><span class="price">€ 1,20</span></li>
+      <li><div class="it-main"><span class="it-name">Ginseng</span></div><span class="leader"></span><span class="price">€ 1,50</span></li>
+      <li><div class="it-main"><span class="it-name">Orzo</span></div><span class="leader"></span><span class="price">€ 1,50</span></li>
+      <li><div class="it-main"><span class="it-name">Cappuccino</span></div><span class="leader"></span><span class="price">€ 1,50</span></li>
+      <li><div class="it-main"><span class="it-name">Veggie-cappuccino</span></div><span class="leader"></span><span class="price">€ 2,00</span></li>
+      <li><div class="it-main"><span class="it-name">Latte macchiato</span></div><span class="leader"></span><span class="price">€ 2,00</span></li>
+      <li><div class="it-main"><span class="it-name">Caffè americano</span></div><span class="leader"></span><span class="price">€ 3,00</span></li>
+      <li><div class="it-main"><span class="it-name">The / Tisane</span></div><span class="leader"></span><span class="price">€ 2,50</span></li>
+      <li><div class="it-main"><span class="it-name">Cioccolata calda</span></div><span class="leader"></span><span class="price">€ 3,50</span></li>
+      <li><div class="it-main"><span class="it-name">Dolce del giorno</span></div><span class="leader"></span><span class="price">€ 2,00</span></li>
+      <li><div class="it-main"><span class="it-name">Shaker proteico (30g)</span></div><span class="leader"></span><span class="price">€ 3,00</span></li>
+      <li><div class="it-main"><span class="it-name">Shaker proteico + un frutto</span></div><span class="leader"></span><span class="price">€ 4,00</span></li>
+      <li><div class="it-main"><span class="it-name">Shaker proteico + due frutti</span></div><span class="leader"></span><span class="price">€ 5,00</span></li>
+    </ul>
+  </section>
+
+  <!-- FRULLATI -->
+  <section id="frullati">
+    <div class="sec-head"><h2>Frullati</h2><span class="flat"></span></div>
+    <p class="price-banner">€ 5,00</p>
+    <ul class="items">
+      <li><div class="it-main"><span class="it-name">Banana, mela, zenzero</span></div></li>
+      <li><div class="it-main"><span class="it-name">Pera, carota, arancia</span></div></li>
+      <li><div class="it-main"><span class="it-name">Cetriolo, kiwi, mirtilli</span></div></li>
+      <li><div class="it-main"><span class="it-name">Latte di cocco, cocco rapè, mandorle</span></div></li>
+      <li><div class="it-main"><span class="it-name">Lampone, more, menta</span></div></li>
+    </ul>
+  </section>
+
+  <!-- SMOOTHIE -->
+  <section id="smoothie">
+    <div class="sec-head"><h2>Smoothie</h2><span class="flat"></span></div>
+    <p class="price-banner">€ 5,00</p>
+    <ul class="items">
+      <li><div class="it-main"><span class="it-name">Cocco, ananas, lime, menta</span></div></li>
+      <li><div class="it-main"><span class="it-name">Fragola, banana, pesca, basilico</span></div></li>
+      <li><div class="it-main"><span class="it-name">Mirtilli, banana, carote, zenzero, cetrioli</span></div></li>
+      <li><div class="it-main"><span class="it-name">Frutti di bosco, menta</span></div></li>
+    </ul>
+  </section>
+
+  <!-- PANCAKE -->
+  <section id="pancake">
+    <div class="sec-head"><h2>Pancake</h2><span class="flat"></span></div>
+    <ul class="items">
+      <li><div class="it-main"><span class="it-name">Classic Pancake</span><span class="it-desc">Pancake classico con copertura ai frutti di bosco e sciroppo d'acero light.</span></div><span class="leader"></span><span class="price">€ 6,00</span></li>
+      <li><div class="it-main"><span class="it-name">Coconut Pancake</span><span class="it-desc">In consistenza di cocco con farcia ai frutti di bosco e copertura di cioccolato bianco, cocco rapè e scaglie di fondente.</span></div><span class="leader"></span><span class="price">€ 8,00</span></li>
+      <li><div class="it-main"><span class="it-name">Berries Pancake</span><span class="it-desc">Ai frutti di bosco, farcia al burro 100% arachidi, ricoperto da confettura ai frutti di bosco e fragole.</span></div><span class="leader"></span><span class="price">€ 7,50</span></li>
+      <li><div class="it-main"><span class="it-name">Chocolate Pancake</span><span class="it-desc">Al cacao con cuore di cioccolato extra fondente, farcia alla crema di nocciole, ricoperto da crema al cacao e scaglie di bianco e fondente.</span></div><span class="leader"></span><span class="price">€ 7,00</span></li>
+      <li><div class="it-main"><span class="it-name">Coffee Pancake</span><span class="it-desc">Bagnato al caffè, farcia cremosa al caffè e servito con sciroppo al cioccolato e chicchi.</span></div><span class="leader"></span><span class="price">€ 6,50</span></li>
+      <li><div class="it-main"><span class="it-name">Fruit Pancake</span><span class="it-desc">Farcito con confettura alla frutta, pioggia di frutta fresca di stagione e pepite di fondente.</span></div><span class="leader"></span><span class="price">€ 6,50</span></li>
+      <li><div class="it-main"><span class="it-name">Honeynut Pancake</span><span class="it-desc">Farcito con noci e miele, ricoperto da una cascata di sciroppo d'acero e frutta secca.</span></div><span class="leader"></span><span class="price">€ 7,00</span></li>
+      <li><div class="it-main"><span class="it-name">Pistacchio Pancake</span><span class="it-desc">Classico con granella di pistacchio, farcito con burro di pistacchio 100%, copertura al cioccolato fondente e pistacchi.</span></div><span class="leader"></span><span class="price">€ 8,00</span></li>
+    </ul>
+  </section>
+
+  <!-- YOGURT -->
+  <section id="yogurt">
+    <div class="sec-head"><h2>Yogurt</h2><span class="flat"></span></div>
+    <ul class="items">
+      <li><div class="it-main"><span class="it-name">Bianco</span><span class="it-desc">Yogurt bianco aromatizzato con proteine alla vaniglia bourbon, petali di mais croccanti, copertura di miele e frutta secca.</span></div><span class="leader"></span><span class="price">€ 5,00</span></li>
+      <li><div class="it-main"><span class="it-name">Cioccolato</span><span class="it-desc">Con proteine al cacao amaro, croccanti barchette ricoperte di cioccolato, pioggia di cioccolato in scaglie e lamponi.</span></div><span class="leader"></span><span class="price">€ 6,00</span></li>
+      <li><div class="it-main"><span class="it-name">Frutta</span><span class="it-desc">Con proteine alla vaniglia bourbon, cereali croccanti al miele, frutta fresca di stagione e sciroppo al cioccolato zero.</span></div><span class="leader"></span><span class="price">€ 5,00</span></li>
+      <li><div class="it-main"><span class="it-name">Cocco</span><span class="it-desc">Con proteine alla vaniglia, mix di cioccolato in scaglie, cocco disidratato, riso soffiato al cioccolato e burro di arachidi.</span></div><span class="leader"></span><span class="price">€ 6,00</span></li>
+      <li><div class="it-main"><span class="it-name">Caramello</span><span class="it-desc">Con proteine al cioccolato, avena tostata, banana, noci e sciroppo al caramello.</span></div><span class="leader"></span><span class="price">€ 6,00</span></li>
+      <li><div class="it-main"><span class="it-name">Tiramisù Fit</span><span class="it-desc">Yogurt aromatizzato al caffè con strati di biscotti in bagna di caffè, polvere di cacao amaro e scaglie di cioccolato.</span></div><span class="leader"></span><span class="price">€ 7,00</span></li>
+    </ul>
+  </section>
+
+  <!-- PORRIDGE -->
+  <section id="porridge">
+    <div class="sec-head"><h2>Porridge</h2><span class="flat"></span></div>
+    <ul class="items">
+      <li><div class="it-main"><span class="it-name">Frutta</span><span class="it-desc">Delicato porridge alla vaniglia, sfumature di burro 100% arachidi salato e frutta fresca di stagione.</span></div><span class="leader"></span><span class="price">€ 7,00</span></li>
+      <li><div class="it-main"><span class="it-name">Cioccolato</span><span class="it-desc">Gustoso porridge al cioccolato spumoso e gocce, con aggiunta di nocciole bio e sciroppo al cioccolato bianco.</span></div><span class="leader"></span><span class="price">€ 7,00</span></li>
+      <li><div class="it-main"><span class="it-name">Cocco</span><span class="it-desc">In consistenza di cocco con proteine al cioccolato e latte di cocco, scaglie di fondente, mandorle croccanti e pioggia di cocco essiccato.</span></div><span class="leader"></span><span class="price">€ 8,00</span></li>
+      <li><div class="it-main"><span class="it-name">Pistacchio</span><span class="it-desc">Al pistacchio con proteine alla vaniglia, pioggia di pistacchi, burro 100% pistacchio e pepite di cioccolato extra fondente.</span></div><span class="leader"></span><span class="price">€ 8,00</span></li>
+      <li><div class="it-main"><span class="it-name">Caramello Twix</span><span class="it-desc">Base di avena al cioccolato, cremoso alla vaniglia, strato di cioccolato croccante, frutta secca e sciroppo al caramello.</span></div><span class="leader"></span><span class="price">€ 7,00</span></li>
+      <li><div class="it-main"><span class="it-name">Porridgemisù</span><span class="it-desc">Base di avena al cacao, mousse allo yogurt arricchita con proteine e caffè, granella di nocciole, chicchi di caffè e spolverata di cacao.</span></div><span class="leader"></span><span class="price">€ 7,00</span></li>
+    </ul>
+  </section>
+
+  <!-- AMERICAN BREAKFAST -->
+  <section id="breakfast">
+    <div class="sec-head"><h2>American Breakfast</h2><span class="flat"></span></div>
+    <ul class="items">
+      <li><div class="it-main"><span class="it-name">Chicken</span><span class="it-desc">Pollo speziato cotto a bassa temperatura, insalatina fresca, pomodorini, olio EVO, petali di mandorle.</span></div><span class="leader"></span><span class="price">€ 7,00</span></li>
+      <li><div class="it-main"><span class="it-name">Turkey Breast</span><span class="it-desc">Fesa di tacchino al forno, formaggio light, misticanza, pomodorini semi-dry.</span></div><span class="leader"></span><span class="price">€ 7,00</span></li>
+      <li><div class="it-main"><span class="it-name">Bresaola</span><span class="it-desc">Insalata di rucola e pomodorini, olio EVO, veli di bresaola magra, salsa allo yogurt greco.</span></div><span class="leader"></span><span class="price">€ 8,00</span></li>
+      <li><div class="it-main"><span class="it-name">Tuna</span><span class="it-desc">Cuore di tonno su battuto di avocado, lattuga fresca e maio light.</span></div><span class="leader"></span><span class="price">€ 7,00</span></li>
+      <li><div class="it-main"><span class="it-name">Seared Salmon</span><span class="it-desc">Salmone scottato con semi di chia su un letto di misticanza e avocado.</span></div><span class="leader"></span><span class="price">€ 8,00</span></li>
+      <li><div class="it-main"><span class="it-name">Eggs</span><span class="it-desc">Battuto di avocado, uovo (cottura a scelta) e pomodorini semi-dry, sale e pepe.</span></div><span class="leader"></span><span class="price">€ 7,00</span></li>
+    </ul>
+    <div class="pair">
+      <h3>Scegli il giusto accoppiamento</h3>
+      <ul>
+        <li>Pane tostato (bianco o segale)</li>
+        <li>Gallette di mais</li>
+        <li>Wasa Original</li>
+        <li>Piadina</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- BOWL -->
+  <section id="bowl">
+    <div class="sec-head"><h2>Bowl</h2><span class="flat"></span></div>
+    <ul class="items">
+      <li><div class="it-main"><span class="it-name">Zio Nick</span><span class="it-desc">Riso basmati profumato, petto di pollo al lime speziato con erbe aromatiche e curry, verdure di stagione croccanti, olio EVO.</span></div><span class="leader"></span><span class="price">€ 8,00</span></li>
+      <li><div class="it-main"><span class="it-name">Zio Michy</span><span class="it-desc">Farro con manzo macinato alla piastra speziato con paprika affumicata, vellutata di pomodoro bio, pisellini dolci e verdure.</span></div><span class="leader"></span><span class="price">€ 9,00</span></li>
+      <li><div class="it-main"><span class="it-name">Zio Tony</span><span class="it-desc">Farro, salmone al pepe con avocado marinato, verdurine colorate e petali di mandorle.</span></div><span class="leader"></span><span class="price">€ 10,00</span></li>
+      <li><div class="it-main"><span class="it-name">Zio Navotti</span><span class="it-desc">Riso basmati, tonno all'olio EVO, fagioli cannellini conditi e pomodorini bio.</span></div><span class="leader"></span><span class="price">€ 9,00</span></li>
+      <li><div class="it-main"><span class="it-name">Zia Angy</span><span class="it-desc">Cous cous, tonno all'olio EVO, pomodorini bio, mais dolce.</span></div><span class="leader"></span><span class="price">€ 8,50</span></li>
+      <li><div class="it-main"><span class="it-name">Veggie-Bowl</span><span class="it-desc">Cous cous, verdure al forno, carote alla julienne, pomodorini e tofu.</span></div><span class="leader"></span><span class="price">€ 9,00</span></li>
+    </ul>
+
+    <div class="builder">
+      <div class="b-title"><strong>Componi la tua bowl</strong></div>
+      <div class="b-from">A partire da € 4,00</div>
+
+      <div class="step">
+        <div class="step-head"><h4>Scegli la base</h4><span class="add">+€ 1,00</span></div>
+        <div class="chips"><span>Riso basmati</span><span>Riso venere</span><span>Cous cous</span><span>Farro</span><span>Orzo</span></div>
+      </div>
+
+      <div class="step">
+        <div class="step-head"><h4>Scegli le proteine</h4></div>
+        <div class="chips">
+          <span>Pollo<b>+2,50</b></span><span>Manzo<b>+2,50</b></span><span>Tonno<b>+2,50</b></span>
+          <span>Salmone<b>+3,50</b></span><span>Uova<b>+2,00</b></span><span>Feta<b>+2,00</b></span>
+          <span>Bresaola<b>+2,50</b></span><span>Tacchino<b>+1,50</b></span><span>Tofu<b>+1,00</b></span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-head"><h4>Scegli i grassi</h4><span class="add">+€ 0,50</span></div>
+        <div class="chips"><span>Frutta secca</span><span>Avocado</span><span>Burro di arachidi</span></div>
+      </div>
+
+      <div class="step">
+        <div class="step-head"><h4>Scegli i contorni</h4><span class="add">+€ 0,50</span></div>
+        <div class="chips"><span>Insalata</span><span>Melanzane</span><span>Zucchine</span><span>Peperoni</span><span>Pomodorini</span><span>Carote</span><span>Mais</span><span>Piselli</span><span>Ceci</span><span>Fagioli</span></div>
+      </div>
+
+      <div class="step">
+        <div class="step-head"><h4>Scegli le salse</h4><span class="add">+€ 0,50</span></div>
+        <div class="chips"><span>Ketchup zero</span><span>Maionese light</span><span>Salsa BBQ</span><span>Salsa yogurt</span></div>
+      </div>
+
+      <div class="step">
+        <div class="step-head"><h4>Scegli gli extra</h4><span class="add">+€ 0,50</span></div>
+        <div class="chips"><span>Philadelphia</span><span>Parmigiano</span><span>Pesto di basilico</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIMI -->
+  <section id="primi">
+    <div class="sec-head"><h2>I Primi</h2><span class="flat"></span></div>
+    <p class="price-banner">€ 6,00</p>
+    <ul class="grid">
+      <li>Pasta al pomodoro</li>
+      <li>Pasta allo scarpariello</li>
+      <li>Pasta all'arrabbiata</li>
+      <li>Pasta e piselli (bianco o pomodoro)</li>
+      <li>Pasta con funghi e piselli</li>
+      <li>Pasta e fagioli</li>
+      <li>Pasta e ceci al rosmarino</li>
+      <li>Pasta e lenticchie</li>
+      <li>Pasta e patate</li>
+      <li>Pasta con tonno e pomodorini</li>
+      <li>Pasta con pesto e pomodorini</li>
+      <li>Pasta con pesto, tonno e pomodorini</li>
+      <li>Pasta con pomodorini, rucola e feta</li>
+      <li>Pasta con crema di broccoletti e feta</li>
+      <li>Pasta con prosciutto e philadelphia</li>
+      <li>Pasta con tonno e philadelphia</li>
+      <li>Pasta salmone e philadelphia</li>
+      <li>Pasta con crema di zucchine e grana</li>
+      <li>Pasta con zucchine e zafferano</li>
+      <li>Pasta con zucchine e gamberetti</li>
+      <li>Pasta all'ortolana</li>
+      <li>Pasta alla siciliana</li>
+      <li>Pasta carbonara light</li>
+      <li>Pasta tonno, capperi e olive</li>
+      <li>Pasta al ragù</li>
+      <li>Pasta e broccoletti</li>
+      <li>Pasta e cavolfiori</li>
+    </ul>
+  </section>
+
+  <!-- SECONDI -->
+  <section id="secondi">
+    <div class="sec-head"><h2>I Secondi</h2><span class="flat"></span></div>
+    <p class="price-banner">€ 8,00</p>
+    <ul class="grid">
+      <li>Hamburger di manzo + contorno</li>
+      <li>Salsiccia + contorno</li>
+      <li>Hamburger di pollo + contorno</li>
+      <li>Spezzatino di pollo + contorno</li>
+      <li>Scaloppina di pollo + contorno</li>
+      <li>Pollo alla cacciatora + contorno</li>
+      <li>Straccetti di pollo + contorno</li>
+      <li>Frittata + contorno</li>
+      <li>Omelette + contorno</li>
+      <li>Omelette con fesa e spinaci</li>
+      <li>Uova alla coque + contorno</li>
+      <li>Merluzzo + contorno</li>
+      <li>Insalatona di uova sode</li>
+      <li>Insalatona di legumi</li>
+      <li>Insalatona di tonno</li>
+      <li>Insalatona di pollo</li>
+      <li>Bresaola, rucola, pomodorini e scaglie</li>
+    </ul>
+
+    <div class="pair">
+      <h3>I contorni</h3>
+      <ul>
+        <li>Insalata mista</li><li>Pomodorini e mais</li><li>Pomodorini</li>
+        <li>Fagiolini verdi</li><li>Peperoni e olive</li><li>Verdure grigliate</li>
+        <li>Melanzane a funghetto</li><li>Patate</li><li>Broccoli</li><li>Funghi</li>
+        <li>Piselli e carote</li><li>Asparagi</li><li>Spinaci</li><li>Cime di rapa</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- BIBITE -->
+  <section id="bibite">
+    <div class="sec-head"><h2>Le Bibite</h2><span class="flat"></span></div>
+    <ul class="items">
+      <li><div class="it-main"><span class="it-name">Acqua naturale / frizzante 0,5L</span></div><span class="leader"></span><span class="price">€ 1,00</span></li>
+      <li><div class="it-main"><span class="it-name">Coca Cola / Coca Cola Zero</span></div><span class="leader"></span><span class="price">€ 2,50</span></li>
+      <li><div class="it-main"><span class="it-name">Red Bull / Red Bull Zero</span></div><span class="leader"></span><span class="price">€ 3,00</span></li>
+      <li><div class="it-main"><span class="it-name">Monster / Monster Zero</span></div><span class="leader"></span><span class="price">€ 3,00</span></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <p class="slogan">Artefici di<br>deliziosi momenti</p>
+  <p class="f-addr">Via Nazionale, 166 — Angri (SA)<br>All'interno del centro Gym Navotti</p>
+  <a class="f-call" href="tel:+393347744033">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1l-2.2 2.2Z"/></svg>
+    334 774 4033
+  </a>
+</footer>
+
+<script>
+  // staggered reveal on load
+  document.querySelectorAll('section').forEach((s,i)=>{
+    s.classList.add('reveal');
+    s.style.animationDelay=(i*0.04)+'s';
+  });
+
+  // scroll-spy for sticky category nav
+  const links=[...document.querySelectorAll('nav.cats a')];
+  const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        links.forEach(a=>a.classList.remove('active'));
+        const a=map.get(e.target.id);
+        if(a){a.classList.add('active');a.scrollIntoView({inline:'center',block:'nearest'});}
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px',threshold:0});
+  document.querySelectorAll('section').forEach(s=>io.observe(s));
+</script>
+
+</body>
+</html>
