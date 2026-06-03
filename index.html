@@ -541,19 +541,34 @@
     s.style.animationDelay=(i*0.04)+'s';
   });
 
-  // scroll-spy for sticky category nav
+  // deterministic scroll-spy for sticky category nav (no flicker)
   const links=[...document.querySelectorAll('nav.cats a')];
   const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
-  const io=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        links.forEach(a=>a.classList.remove('active'));
-        const a=map.get(e.target.id);
-        if(a){a.classList.add('active');a.scrollIntoView({inline:'center',block:'nearest'});}
-      }
-    });
-  },{rootMargin:'-45% 0px -50% 0px',threshold:0});
-  document.querySelectorAll('section').forEach(s=>io.observe(s));
+  const sections=[...document.querySelectorAll('section')];
+  const navEl=document.querySelector('nav.cats');
+  let currentId=null;
+
+  function syncNav(){
+    const line=(navEl?navEl.getBoundingClientRect().bottom:0)+10;
+    let activeId=sections[0].id;
+    for(const s of sections){
+      if(s.getBoundingClientRect().top<=line) activeId=s.id; else break;
+    }
+    if(activeId===currentId) return;          // change active only once per section
+    currentId=activeId;
+    const target=map.get(activeId);
+    links.forEach(a=>a.classList.toggle('active',a===target));
+    if(target) target.scrollIntoView({inline:'center',block:'nearest'});
+  }
+
+  let ticking=false;
+  window.addEventListener('scroll',()=>{
+    if(ticking) return;
+    ticking=true;
+    requestAnimationFrame(()=>{syncNav();ticking=false;});
+  },{passive:true});
+  window.addEventListener('resize',syncNav,{passive:true});
+  syncNav();
 </script>
 
 </body>
